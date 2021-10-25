@@ -1,1 +1,5 @@
-# Smart-Contract-2.0
+# Upgradeable ERC20 Token Smart Contract
+
+```
+work in progress
+```
