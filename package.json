@@ -1,0 +1,25 @@
+{
+  "name": "smart-contract-2.0",
+  "version": "1.0.0",
+  "description": "nv 2.0 erc20 upgradeable smart contract",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NucleusVision/Smart-Contract-2.0.git"
+  },
+  "author": "DeFiMonk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NucleusVision/Smart-Contract-2.0/issues"
+  },
+  "homepage": "https://github.com/NucleusVision/Smart-Contract-2.0#readme",
+  "dependencies": {
+    "@openzeppelin/contracts-upgradeable": "^4.3.2"
+  }
+}
