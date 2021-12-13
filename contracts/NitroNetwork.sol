@@ -24,8 +24,6 @@ contract NitroNetwork is
     event RemovedBlackList(address _who, uint256 _when);
     event DestroyedBlackFunds(address _who, uint256 _howmuch, uint256 _when);
 
-    constructor() initializer {}
-
     function initialize(
         address _admin,
         address _governance,
@@ -34,7 +32,7 @@ contract NitroNetwork is
         address _minter,
         address _mintTo
     ) public initializer {
-        __ERC20_init("Nitro Network", "NITRO");
+        __ERC20_init("NitroNetwork", "ncash");
         __ERC20Burnable_init();
         __Pausable_init();
         __AccessControl_init();
@@ -43,7 +41,6 @@ contract NitroNetwork is
         _setupRole(GOVERNANCE_ROLE, _governance);
         _setupRole(OPERATOR_ROLE, _operator);
         _setupRole(PAUSER_ROLE, _pauser);
-        _mint(_mintTo, 1000000 * 10**decimals());
         _setupRole(MINTER_ROLE, _minter);
     }
 
