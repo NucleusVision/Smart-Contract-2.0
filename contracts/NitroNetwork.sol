@@ -22,15 +22,14 @@ contract NitroNetwork is
     mapping(address => bool) public isBlackListed;
     event AddedBlackList(address _who, uint256 _when);
     event RemovedBlackList(address _who, uint256 _when);
-    event DestroyedBlackFunds(address _who, uint256 _howmuch, uint256 _when);
+    event DestroyedBlackFunds(address _from, address _to, uint256 _howmuch, uint256 _when);
 
     function initialize(
         address _admin,
         address _governance,
         address _operator,
         address _pauser,
-        address _minter,
-        address _mintTo
+        address _minter
     ) public initializer {
         __ERC20_init("NitroNetwork", "ncash");
         __ERC20Burnable_init();
@@ -55,7 +54,7 @@ contract NitroNetwork is
     function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
         _mint(to, amount);
     }
-    
+
     function addBlackList(address _who) public onlyRole(OPERATOR_ROLE) {
         isBlackListed[_who] = true;
         emit AddedBlackList(_who, block.number);
@@ -70,17 +69,17 @@ contract NitroNetwork is
         return isBlackListed[_who];
     }
 
-    function burnBlackFunds(address _blackListedUser)
-        public
-        onlyRole(OPERATOR_ROLE)
-    {
+    function recoverBlackFunds(
+        address from,
+        address to,
+        uint256 howmuch
+    ) public onlyRole(OPERATOR_ROLE) {
         require(
-            isBlackListed[_blackListedUser],
-            "BurnBlackFunds:: Blacklist user before destroy funds"
+            isBlackListed[from],
+            "RecoverBlackFunds:: Blacklist user before recover funds"
         );
-        uint256 dirtyFunds = balanceOf(_blackListedUser);
-        _burn(_blackListedUser, dirtyFunds);
-        emit DestroyedBlackFunds(_blackListedUser, dirtyFunds, block.number);
+        super._beforeTokenTransfer(from, to, howmuch);
+        emit DestroyedBlackFunds(from, to, howmuch, block.number);
     }
 
     function _beforeTokenTransfer(
