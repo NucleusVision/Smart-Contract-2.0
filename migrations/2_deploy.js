@@ -9,8 +9,7 @@ module.exports = async function (deployer, accounts) {
       "0x4d09c1eBa78c6f8EC4bB443F949118C9c5C2ad3B", //"governance_address",
       "0x4d09c1eBa78c6f8EC4bB443F949118C9c5C2ad3B", //"operator_address",
       "0x4d09c1eBa78c6f8EC4bB443F949118C9c5C2ad3B", //"pauser_address",
-      "0x4d09c1eBa78c6f8EC4bB443F949118C9c5C2ad3B", //"minter_address",
-      "0x4d09c1eBa78c6f8EC4bB443F949118C9c5C2ad3B", //"mint_to",
+      "0x4d09c1eBa78c6f8EC4bB443F949118C9c5C2ad3B", //"minter_address"
     ],
     { deployer, unsafeAllowCustomTypes: true }
   );
