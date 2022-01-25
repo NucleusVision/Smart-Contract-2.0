@@ -49,7 +49,7 @@ contract NitroNetwork is
     _setupRole(OPERATOR_ROLE, _operator);
     _setupRole(PAUSER_ROLE, _pauser);
     _setupRole(MINTER_ROLE, _minter);
-    maxPerMint = 500 * 10**6 * 10**18;
+    maxPerMint = 1 * 10**9 * 10**18;
   }
 
   function pause() public onlyRole(PAUSER_ROLE) {
